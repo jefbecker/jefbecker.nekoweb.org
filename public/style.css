@@ -50,7 +50,7 @@ code {
 }
 
 blockquote {
-  font-size: 10.25em;
+  font-size: 0.875em;
   padding-left: 0.625em;
 }
 
@@ -160,7 +160,7 @@ footer {
   }
 
   blockquote {
-    font-size: 10.25em;
+    font-size: 0.875em;
     padding-left: 0.625em;
     border-left: 0.3125em solid #333;
   }
