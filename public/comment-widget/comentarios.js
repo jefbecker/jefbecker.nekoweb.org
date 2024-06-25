@@ -9,7 +9,7 @@
     After filling out your options, just paste this anywhere you want a comment section
     (But change the script src URL to wherever you have this widget stored on your site!)
 
-        <div id="comentarios"></div>
+        <div id="comentarios-form"></div>
         <script src="/comment-widget/comentarios.js"></script>
 
     Have fun! Bug reports are encouraged if you happen to run into any issues.
@@ -18,14 +18,14 @@
 
 // The values in this section are REQUIRED for the widget to work! Keep them in quotes!
 const s_stylePath = '/comment-widget/default.css'; // Define the path for the stylesheet (ie. /styles/commentwidget.css)
-const s_formId = '1FAIpQLSfUEpjqrDSJsNU6YQBOikw-1Y65E5zGrilTOfZAxT_F3X-DAw'; // The Google Form
-const s_nameId = '809730937'; // The Name field ID
-const s_websiteId = '765040019'; // The Website field ID
-const s_textId = '34692011'; // The Text field ID
-const s_moderatedId = '1269491157'; // The Moderated field ID
-const s_pageId = '1219107024'; // The Page field ID
-const s_replyId = '2029382417'; // The Reply field ID
-const s_sheetId = '1iGMapyuFhuaQFE_DWB6cexB8ZN1N_A-CsjkTNm5Wats'; // The Google Sheet
+const s_formId = '1FAIpQLSeH0UOEfsLdAOnV_WWAK2EesiU2aqIM-JqVwnMqbl0lYkfiew'; // The Google Form
+const s_nameId = '1624236660'; // The Name field ID
+const s_websiteId = '440669782'; // The Website field ID
+const s_textId = '1231118518'; // The Text field ID
+const s_moderatedId = '23499870'; // The Moderated field ID
+const s_pageId = '564803867'; // The Page field ID
+const s_replyId = '82427602'; // The Reply field ID
+const s_sheetId = '1p6ifk7G3hrwVU1ww-V0BZmNnaM06-iULhwJ4DHXJsYY'; // The Google Sheet
 
 // The values below are necessary for accurate timestamps, I've filled it in with EST as an example
 const s_timezone = -3; // Your personal timezone (Example: UTC-5:00 is -5 here, UTC+10:30 would be 10.5)
@@ -51,14 +51,14 @@ const s_filteredWords = [ // Add words to filter by putting them in quotes and s
 ]
 
 // Text - Change what messages/text appear on the form and in the comments section (Mostly self explanatory)
-const s_widgetTitle = 'Assine meu Livro de Visitas!';
+const s_widgetTitle = 'Deixe um Comentário!';
 const s_nameFieldLabel = 'Nome';
 const s_websiteFieldLabel = 'Site (Opcional)';
-const s_textFieldLabel = 'Sua Mensagem';
+const s_textFieldLabel = 'Seu Comentário';
 const s_submitButtonLabel = 'Enviar';
 const s_loadingText = 'Carregando comentários...';
-const s_noCommentsText = 'Ninguém assinou ainda!';
-const s_closedCommentsText = 'O livro de visitas está fechado no momento!';
+const s_noCommentsText = 'Ninguém comentou ainda!';
+const s_closedCommentsText = 'Os comentários estão fechados no momento!';
 const s_websiteText = 'Site'; // The links to websites left by users on their comments
 const s_replyButtonText = 'Responder'; // The button for replying to someone
 const s_replyingText = 'Respondendo para'; // The text that displays while the user is typing a reply
@@ -106,7 +106,7 @@ const v_formHtml = `
             <label class="c-label c-textLabel" for="entry.${s_textId}">${s_textFieldLabel}</label>
             <textarea class="c-input c-textInput" name="entry.${s_textId}" id="entry.${s_textId}" rows="4" cols="50"  maxlength="${s_maxLength}" required></textarea>
         </div>
-        <input name="entry.${s_moderatedId}" id="entry.${s_moderatedId}" type="hidden" readonly value="false">
+        <input name="entry.${s_moderatedId}" id="entry.${s_moderatedId}" type="hidden" readonly value="true">
 
     </div>
 
@@ -114,7 +114,7 @@ const v_formHtml = `
 `;
 
 // Insert main HTML to page
-document.getElementById('comentarios').innerHTML = v_mainHtml;
+document.getElementById('comentarios-form').innerHTML = v_mainHtml;
 const c_form = document.getElementById('c_form');
 if (s_commentsOpen) { c_form.innerHTML = v_formHtml }
 else { c_form.innerHTML = s_closedCommentsText }
@@ -140,7 +140,7 @@ else { c_submitButton = document.createElement('button') }
 
 // Form submission feedback
 c_form.addEventListener('submit', function () {
-    alert('Obrigado por assinar o meu livro de visitas! Seu comentário está aguardando moderação. Isso pode levar algumas horas.');
+    alert('Obrigado! Seu comentário foi enviado com sucesso e aparecerá em alguns segundos.');
     c_form.submit();
     return true;
 });
