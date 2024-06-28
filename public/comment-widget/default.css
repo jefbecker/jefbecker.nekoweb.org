@@ -91,6 +91,11 @@
     display: block;
     margin-left: auto;
     margin-right: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #222;
+    background-color: #e5e5e5;
+    border-color: #545454 #000 #000 #545454;
 }
 
 #c_replyingText {
@@ -154,14 +159,23 @@
 
 .c-replyButton {
     margin-top: 10px;
+    color: #222;
+    background-color: #e5e5e5;
+    border-color: #545454 #000 #000 #545454;
 }
 
 .c-expandButton {
     float: right;
     margin-top: 10px;
+    color: #222;
+    background-color: #e5e5e5;
+    border-color: #545454 #000 #000 #545454;
 }
 
 .c-paginationButton {
     margin-right: 4px;
     margin-left: 4px;
+    color: #222;
+    background-color: #e5e5e5;
+    border-color: #545454 #000 #000 #545454;
 }
