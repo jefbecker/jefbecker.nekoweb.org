@@ -19,7 +19,6 @@ body {
   font-size: 1em;
   padding: 0 0.625em;
   font-family: system-ui;
-
 }
 
 header {
@@ -67,6 +66,12 @@ summary {
   padding: 0.1875em;
   padding-left: 0.625em;
   border-radius: 0.25em;
+  cursor: pointer;
+}
+
+details {
+  padding-top: 0.3125em;
+  padding-bottom: 0.3125em;
 }
 
 button {
@@ -282,6 +287,10 @@ footer {
   a:focus {
     outline-color: transparent;
     font-weight: normal;
+    /*outline-width: 0.125em;
+    outline-style: solid;
+    border-radius: 0.25em;
+    outline-color: #26D9D6;*/
   }
 
   a:hover {
@@ -438,6 +447,10 @@ footer {
   a:focus {
     outline-color: transparent;
     font-weight: normal;
+    /*outline-width: 0.125em;
+    outline-style: solid;
+    border-radius: 0.25em;
+    outline-color: #055252;*/
   }
 
   a:hover {
