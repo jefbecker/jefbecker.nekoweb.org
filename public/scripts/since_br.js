@@ -1,1 +1,0 @@
-document.getElementById("date").innerHTML = "<strong>2021 - 2024</strong>";
