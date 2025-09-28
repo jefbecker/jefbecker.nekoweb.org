@@ -1,4 +1,4 @@
-name: Deploy to Nekoweb
+name: Build and Deploy to Nekoweb
 
 on:
   push:
@@ -6,25 +6,48 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Prepare build
-        run: |
-          mkdir -p ./build
-          cp -r ./public/* ./build
+    - name: Install NVM
+      run: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
-      - name: Deploy to Nekoweb
-        uses: mp-pinheiro/nekoweb-deploy@main
-        with:
-          API_KEY: ${{ secrets.NEKOWEB_API_KEY }}
-          BUILD_DIR: './build'
-          DEPLOY_DIR: '/'
-          CLEANUP: 'true'
-          DELAY: '0.5'
-          NEKOWEB_PAGENAME: 'jefbecker'
-          ENCRYPTION_KEY: ${{ secrets.NEKOWEB_ENCRYPTION_KEY }}
+    - name: Install Node.js and build
+      run: |
+        chmod +x ./build.sh
+        ./build.sh
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build
+        path: ./build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build
+        path: ./build
+
+    - name: Deploy to Nekoweb
+      uses: mp-pinheiro/nekoweb-deploy@main
+      with:
+        API_KEY: ${{ secrets.NEKOWEB_API_KEY }}
+        BUILD_DIR: './build'
+        DEPLOY_DIR: '/'
+        CLEANUP: 'true'
+        NEKOWEB_PAGENAME: 'jefbecker'
+        ENCRYPTION_KEY: ${{ secrets.NEKOWEB_ENCRYPTION_KEY }}
