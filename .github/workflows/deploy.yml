@@ -18,11 +18,6 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Build site
-        run: |
-          mkdir build
-          cp docs/favicon.ico build/favicon.ico
-
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
