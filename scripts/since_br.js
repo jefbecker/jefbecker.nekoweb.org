@@ -1,1 +1,0 @@
-document.getElementById("date").innerHTML = "<strong>jefbecker.com | 2021 - 2025</strong>";
